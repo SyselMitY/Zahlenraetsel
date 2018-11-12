@@ -3,34 +3,41 @@ import javax.swing.*;
 public class Zahlenraetsel {
     public static void main(String[] args) {
 
-        int min = Integer.parseInt(JOptionPane.showInputDialog("Gib ein Minimum ein"));
-        int max = Integer.parseInt(JOptionPane.showInputDialog("Gib ein Maximum ein"));
+        int min = Integer.parseInt(JOptionPane.showInputDialog("Enter a minimum"));
+        int max = Integer.parseInt(JOptionPane.showInputDialog("Enter a maximum"));
         int guess;
         int attempts = 0;
         boolean finished = false;
 
-        JOptionPane.showMessageDialog(null, "Denk dir eine zufällige Zahl zwischen " + min + " und " + max + " aus.");
+        JOptionPane.showMessageDialog(null, "Think of a number between " + min + " and " + max);
 
-        do {
-            System.out.println("min = " + min);
-            System.out.println("max = " + max);
+        try {
+            do {
+                System.out.println("min = " + min);
+                System.out.println("max = " + max);
 
-            guess = (int) (min + Math.floor(((float)(max-min)/2.0)));
-            attempts++;
+                guess = (int) (min + Math.floor(((float) (max - min) / 2.0)));
+                attempts++;
 
-            switch (JOptionPane.showConfirmDialog(null, "Ist die Zahl " + guess + " richtig?\nBei zu großer Zahl auf Cancel, sonst auf No drücken.")) {
-                case 0:
-                    JOptionPane.showMessageDialog(null, "Ich habe die Zahl mit " + attempts + " Versuchen erraten!");
-                    finished = true;
-                    break;
-                case 1:
-                    min = guess+1;
-                    break;
-                case 2:
-                    max = guess;
-                    break;
-            }
+                switch (JOptionPane.showConfirmDialog(null, "Is the number " + guess + " correct?\nPress Cancel if the guess is too big or No if it is too small.")) {
+                    case 0:
+                        JOptionPane.showMessageDialog(null, "I guessed the number correctly with " + attempts + " attempts!");
+                        finished = true;
+                        break;
+                    case 1:
+                        min = guess + 1;
+                        break;
+                    case 2:
+                        max = guess;
+                        break;
+                }
 
-        } while (!finished);
+                if(max<min) throw new NoPossibleNumberException();
+
+            } while (!finished);
+        } catch (NoPossibleNumberException e) {
+            JOptionPane.showMessageDialog(null,"Error! The range "+min+"-"+max+" is not possible!");
+            e.printStackTrace();
+        }
     }
 }
