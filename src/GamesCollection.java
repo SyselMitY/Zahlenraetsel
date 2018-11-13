@@ -1,10 +1,11 @@
+import simplegames.GuessingGame;
 import simplegames.GuessingGame2;
 
 import java.util.Scanner;
 
 public class GamesCollection {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
 
         System.out.println("Welcome to the Java Games Collection\nChoose a game you want to play:");
@@ -14,7 +15,7 @@ public class GamesCollection {
 
         switch (selection) {
             case 1:
-                System.out.println("Game not implemented yet!");
+                GuessingGame.run();
                 break;
             case 2:
                 GuessingGame2.run();
