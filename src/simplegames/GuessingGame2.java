@@ -1,7 +1,11 @@
+package simplegames;
+
+import libs.NoPossibleNumberException;
+
 import javax.swing.*;
 
-public class Zahlenraetsel {
-    public static void main(String[] args) {
+public class GuessingGame2 {
+    public static void run() {
 
         int min = Integer.parseInt(JOptionPane.showInputDialog("Enter a minimum"));
         int max = Integer.parseInt(JOptionPane.showInputDialog("Enter a maximum"));
