@@ -1,5 +1,5 @@
-import simplegames.GuessingGame;
 import simplegames.GuessingGame2;
+import utilities.PointerCoords;
 
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class GamesCollection {
 
         switch (selection) {
             case 1:
-                GuessingGame.run();
+                PointerCoords.run();
                 break;
             case 2:
                 GuessingGame2.run();
